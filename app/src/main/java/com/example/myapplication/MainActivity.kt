@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             val row = mainContainer.getChildAt(i) as LinearLayout
             for (j in 0 until row.childCount) {
                 var rnds = (0..2).random()
-                val textView = row.getChildAt(i) as TextView
+                val textView = row.getChildAt(j) as TextView
                 if (rnds == 0) {
                     val colorV = "green"
                     textView.setBackgroundColor(Color.parseColor(colorV));
