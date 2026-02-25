@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.LinearLayout
 
 
 import android.widget.TextView
@@ -23,38 +24,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Source - https://stackoverflow.com/a/45687695
-// Posted by s1m0nw1, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-02-25, License - CC BY-SA 4.0
-
-
-        // Source - https://stackoverflow.com/q/23517879
-// Posted by user3274646, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-02-25, License - CC BY-SA 3.0
-        val someView = findViewById<TextView>(R.id.t)
-        someView.setBackgroundColor(Color.parseColor("#ffffff"));
-
-        var rnds = (0..2).random() // generates random from 0 to 10 (inclusi
         // ve)
-        var y = "t"
-        var num = 0
-       while{
-           for (num in 0 until 15){
-           y+=num
-               if (rnds == 0) {
-                   val colorV = "green"
-                   someView.setBackgroundColor(Color.parseColor(colorV));
-               }
-               if (rnds == 1) {
-                   val colorV = "red"
-                   someView.setBackgroundColor(Color.parseColor(colorV));
-               }
-               if (rnds == 2) {
-                   val colorV = "yellow"
-                   someView.setBackgroundColor(Color.parseColor(colorV));
-               }
+        val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
 
-           }
-
+        for (i in 0 until mainContainer.childCount) {
+            val row = mainContainer.getChildAt(i) as LinearLayout
+            for (j in 0 until row.childCount) {
+                var rnds = (0..2).random()
+                val textView = row.getChildAt(i) as TextView
+                if (rnds == 0) {
+                    val colorV = "green"
+                    textView.setBackgroundColor(Color.parseColor(colorV));
+                }
+                if (rnds == 1) {
+                    val colorV = "red"
+                    textView.setBackgroundColor(Color.parseColor(colorV));
+                }
+                if (rnds == 2) {
+                    val colorV = "yellow"
+                    textView.setBackgroundColor(Color.parseColor(colorV));
+                }
+            }
+        }
 
     }
 }
