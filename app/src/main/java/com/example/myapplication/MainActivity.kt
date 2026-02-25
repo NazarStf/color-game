@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.LinearLayout
 import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 import android.widget.TextView
 import android.graphics.Color
@@ -71,6 +72,20 @@ class MainActivity : AppCompatActivity() {
 
                     if (checkColors()) {
                         Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
+
+                        val builder = AlertDialog.Builder(this)
+                        builder.setMessage("Restart?")
+
+                        builder.setPositiveButton("Yes") { dialog, which ->
+                            randomizeColors()
+                        }
+                        builder.setNegativeButton("No") { dialog, which ->
+                            dialog.dismiss()
+                        }
+
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+
                     }
                 }
 
