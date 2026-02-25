@@ -23,8 +23,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
         val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
+
+        fun randomizeColors() {
+            for (i in 0 until mainContainer.childCount) {
+                val row = mainContainer.getChildAt(i) as LinearLayout
+                for (j in 0 until row.childCount) {
+                    val textView = row.getChildAt(j) as TextView
+                    val newColor = colors.random()
+                    textView.setBackgroundColor(newColor)
+
+                }
+            }
+
+        }
+        randomizeColors()
 
         fun checkColors(): Boolean {
             var firstColor: Int? = null
@@ -59,12 +74,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-
-
-
-
             }
 
         }
+
     }
 }
