@@ -33,20 +33,27 @@ class MainActivity : AppCompatActivity() {
         val someView = findViewById<TextView>(R.id.t)
         someView.setBackgroundColor(Color.parseColor("#ffffff"));
 
-        val rnds = (0..2).random() // generates random from 0 to 10 (inclusi
+        var rnds = (0..2).random() // generates random from 0 to 10 (inclusi
         // ve)
-        if (rnds == 0) {
-            val colorV = "green"
-            someView.setBackgroundColor(Color.parseColor(colorV));
-        }
-        if (rnds == 1) {
-            val colorV = "red"
-            someView.setBackgroundColor(Color.parseColor(colorV));
-        }
-        if (rnds == 2) {
-            val colorV = "yellow"
-            someView.setBackgroundColor(Color.parseColor(colorV));
-        }
+        var y = "t"
+        var num = 0
+       while{
+           for (num in 0 until 15){
+           y+=num
+               if (rnds == 0) {
+                   val colorV = "green"
+                   someView.setBackgroundColor(Color.parseColor(colorV));
+               }
+               if (rnds == 1) {
+                   val colorV = "red"
+                   someView.setBackgroundColor(Color.parseColor(colorV));
+               }
+               if (rnds == 2) {
+                   val colorV = "yellow"
+                   someView.setBackgroundColor(Color.parseColor(colorV));
+               }
+
+           }
 
 
     }
