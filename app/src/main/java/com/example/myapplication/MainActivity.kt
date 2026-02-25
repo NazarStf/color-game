@@ -26,26 +26,20 @@ class MainActivity : AppCompatActivity() {
         // Source - https://stackoverflow.com/a/45687695
         // ve)
         val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
-
+        val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
         for (i in 0 until mainContainer.childCount) {
             val row = mainContainer.getChildAt(i) as LinearLayout
             for (j in 0 until row.childCount) {
-                var rnds = (0..2).random()
                 val textView = row.getChildAt(j) as TextView
-                if (rnds == 0) {
-                    val colorV = "green"
-                    textView.setBackgroundColor(Color.parseColor(colorV));
-                }
-                if (rnds == 1) {
-                    val colorV = "red"
-                    textView.setBackgroundColor(Color.parseColor(colorV));
-                }
-                if (rnds == 2) {
-                    val colorV = "yellow"
-                    textView.setBackgroundColor(Color.parseColor(colorV));
+                textView.isClickable = true
+                textView.isFocusable = true
+                textView.setOnClickListener {
+                    textView.setBackgroundColor(colors.random())
                 }
             }
-        }
+
+    }
+
 
     }
 }
