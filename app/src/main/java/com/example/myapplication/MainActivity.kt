@@ -22,6 +22,25 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val t1 = findViewById<TextView>(R.id.t1)
+        val t2 = findViewById<TextView>(R.id.t2)
+        val t3 = findViewById<TextView>(R.id.t3)
+        val t4 = findViewById<TextView>(R.id.t4)
+        val t5 = findViewById<TextView>(R.id.t5)
+        val t6 = findViewById<TextView>(R.id.t6)
+        val t7 = findViewById<TextView>(R.id.t7)
+        val t8 = findViewById<TextView>(R.id.t8)
+        val t9 = findViewById<TextView>(R.id.t9)
+        val t10 = findViewById<TextView>(R.id.t10)
+        val t11 = findViewById<TextView>(R.id.t11)
+        val t12 = findViewById<TextView>(R.id.t12)
+        val t13 = findViewById<TextView>(R.id.t13)
+        val t14 = findViewById<TextView>(R.id.t14)
+        val t15 = findViewById<TextView>(R.id.t15)
+
+        val allTextViews = listOf(t1,t2,t3,t4,t5,t6,t7,t8,t9, t10,t11,t12,t13,t14,t15)
+
+
 
         // Source - https://stackoverflow.com/a/45687695
         // ve)
