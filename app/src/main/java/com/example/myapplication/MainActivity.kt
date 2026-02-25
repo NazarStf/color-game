@@ -23,8 +23,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
+        val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
 
-        fun checkColors(mainContainer: LinearLayout): Boolean {
+        fun checkColors(): Boolean {
             var firstColor: Int? = null
 
             for (i in 0 until mainContainer.childCount) {
@@ -40,29 +42,29 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
-            val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
-            for (i in 0 until mainContainer.childCount) {
-                val row = mainContainer.getChildAt(i) as LinearLayout
-                for (j in 0 until row.childCount) {
-                    val textView = row.getChildAt(j) as TextView
-                    textView.isClickable = true
-                    textView.isFocusable = true
-                    textView.setOnClickListener {
-                        val newColor = colors.random()
-                        textView.setBackgroundColor(newColor)
+            return true
+        }
+        for (i in 0 until mainContainer.childCount) {
+            val row = mainContainer.getChildAt(i) as LinearLayout
+            for (j in 0 until row.childCount) {
+                val textView = row.getChildAt(j) as TextView
+                textView.isClickable = true
+                textView.isFocusable = true
+                textView.setOnClickListener {
+                    val newColor = colors.random()
+                    textView.setBackgroundColor(newColor)
 
-                        if (checkColors(mainContainer)) {
-                            Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
-                        }
+                    if (checkColors()) {
+                        Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
                     }
-
                 }
 
 
 
+
+
             }
-            return true
+
         }
     }
 }
