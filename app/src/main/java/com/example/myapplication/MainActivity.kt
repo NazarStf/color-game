@@ -12,8 +12,8 @@ import androidx.appcompat.app.AlertDialog
 
 import android.widget.TextView
 import android.graphics.Color
-import android.view.View
-import org.w3c.dom.Text
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
         val levels = findViewById<LinearLayout>(R.id.levels)
+        var selectedLevel = 0
         val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
 
         fun randomizeColors() {
@@ -100,6 +101,26 @@ class MainActivity : AppCompatActivity() {
 
             return true
         }
+        fun checkColors2(): Boolean {
+            for (i in 0 until mainContainer.childCount) {
+                val row = mainContainer.getChildAt(i) as LinearLayout
+                for (j in 0 until row.childCount) {
+                    val tv = row.getChildAt(j) as TextView
+                    val bg = tv.background
+                    if (bg is ColorDrawable) {
+                        val color = bg.color
+                        if (color != Color.RED) {
+                            return false
+                        }
+
+                    }
+                }
+            }
+
+            return true
+        }
+
+
         fun winner(){
             Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
 
@@ -117,16 +138,6 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
 
         }
-        fun win0() {
-            if (checkColors()) {
-                winner()
-            }
-        }
-        fun win1(){
-            if (checkColors1()) {
-                winner()
-            }
-        }
 
 
 
@@ -139,26 +150,24 @@ class MainActivity : AppCompatActivity() {
                     textView.setOnClickListener {
                         val newColor = colors.random()
                         textView.setBackgroundColor(newColor)
-                        val num = 0
-                        for (j in 0 until levels.childCount) {
-                            val textView = levels.getChildAt(j) as TextView
-                            textView.setOnClickListener {
-                                val num = j
-                                textView.setBackgroundColor(Color.BLUE)
-                            }
-                            when(num) {
-                                0 -> win0()
-                                1 -> win1()
-                                2 -> print("Earth is a planet")
-                                3 -> print("Earth is a planet")
-                                else -> print("I don't know anything about it")
-                            }
-                    }
+                        when (selectedLevel) {
+                            0 -> if (checkColors()) winner()
+                            1 -> if (checkColors1()) winner()
+                            2 -> if (checkColors2()) winner()
+                            3 -> if (checkColors2()) winner()
+                        }
 
                 }
 
             }
+                for (j in 0 until levels.childCount) {
+                    val levelView = levels.getChildAt(j) as TextView
 
+                    levelView.setOnClickListener {
+                        selectedLevel = j
+                        Toast.makeText(this, "Level $selectedLevel selected", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
     }
 }
