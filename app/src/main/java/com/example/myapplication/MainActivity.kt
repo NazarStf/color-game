@@ -12,6 +12,8 @@ import androidx.appcompat.app.AlertDialog
 
 import android.widget.TextView
 import android.graphics.Color
+import android.view.View
+import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
+        val levels = findViewById<LinearLayout>(R.id.levels)
         val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
 
         fun randomizeColors() {
@@ -60,38 +63,102 @@ class MainActivity : AppCompatActivity() {
             }
             return true
         }
-        for (i in 0 until mainContainer.childCount) {
-            val row = mainContainer.getChildAt(i) as LinearLayout
-            for (j in 0 until row.childCount) {
-                val textView = row.getChildAt(j) as TextView
-                textView.isClickable = true
-                textView.isFocusable = true
-                textView.setOnClickListener {
-                    val newColor = colors.random()
-                    textView.setBackgroundColor(newColor)
 
-                    if (checkColors()) {
-                        Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
+        fun checkColors1(): Boolean {
 
-                        val builder = AlertDialog.Builder(this)
-                        builder.setMessage("Restart?")
+            var firstColor: Int? = null
+            var secondColor: Int? = null
+            var thirdColor: Int? = null
 
-                        builder.setPositiveButton("Yes") { dialog, which ->
-                            randomizeColors()
+            for (i in 0 until mainContainer.childCount) {
+                val row = mainContainer.getChildAt(i) as LinearLayout
+
+                for (j in 0 until row.childCount) {
+                    val tv = row.getChildAt(j) as TextView
+                    val bg = tv.background
+
+                    if (bg is ColorDrawable) {
+                        val color = bg.color
+
+                        when (j) {
+                            0 -> {
+                                if (firstColor == null) firstColor = color
+                                else if (color != firstColor) return false
+                            }
+                            1 -> {
+                                if (secondColor == null) secondColor = color
+                                else if (color != secondColor) return false
+                            }
+                            2 -> {
+                                if (thirdColor == null) thirdColor = color
+                                else if (color != thirdColor) return false
+                            }
                         }
-                        builder.setNegativeButton("No") { dialog, which ->
-                            dialog.dismiss()
-                        }
-
-                        val dialog: AlertDialog = builder.create()
-                        dialog.show()
-
                     }
+                }
+            }
+
+            return true
+        }
+        fun winner(){
+            Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
+
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("Restart?")
+
+            builder.setPositiveButton("Yes") { dialog, which ->
+                randomizeColors()
+            }
+            builder.setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+
+        }
+        fun win0() {
+            if (checkColors()) {
+                winner()
+            }
+        }
+        fun win1(){
+            if (checkColors1()) {
+                winner()
+            }
+        }
+
+
+
+            for (i in 0 until mainContainer.childCount) {
+                val row = mainContainer.getChildAt(i) as LinearLayout
+                for (j in 0 until row.childCount) {
+                    val textView = row.getChildAt(j) as TextView
+                    textView.isClickable = true
+                    textView.isFocusable = true
+                    textView.setOnClickListener {
+                        val newColor = colors.random()
+                        textView.setBackgroundColor(newColor)
+                        val num = 0
+                        for (j in 0 until levels.childCount) {
+                            val textView = levels.getChildAt(j) as TextView
+                            textView.setOnClickListener {
+                                val num = j
+                                textView.setBackgroundColor(Color.BLUE)
+                            }
+                            when(num) {
+                                0 -> win0()
+                                1 -> win1()
+                                2 -> print("Earth is a planet")
+                                3 -> print("Earth is a planet")
+                                else -> print("I don't know anything about it")
+                            }
+                    }
+
                 }
 
             }
 
         }
-
     }
 }
