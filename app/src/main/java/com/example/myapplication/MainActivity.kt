@@ -130,6 +130,7 @@ class MainActivity : AppCompatActivity() {
                     val bg = tv.background
                     if (bg is ColorDrawable) {
 
+
                     }
                 }
             }
