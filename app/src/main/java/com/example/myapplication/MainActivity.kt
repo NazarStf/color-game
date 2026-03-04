@@ -122,6 +122,22 @@ class MainActivity : AppCompatActivity() {
 
             return true
         }
+        fun checkColors3(): Boolean {
+            for (i in 0 until mainContainer.childCount) {
+                val row = mainContainer.getChildAt(i) as LinearLayout
+                for (j in 0 until row.childCount) {
+                    val tv = row.getChildAt(j) as TextView
+                    val bg = tv.background
+                    if (bg is ColorDrawable) {
+
+                    }
+                }
+            }
+
+            return true
+        }
+
+
 
         fun winner(){
             Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
@@ -156,7 +172,7 @@ class MainActivity : AppCompatActivity() {
                             0 -> if (checkColors()) winner()
                             1 -> if (checkColors1()) winner()
                             2 -> if (checkColors2()) winner()
-                            3 -> if (checkColors2()) winner()
+                            3 -> if (checkColors3()) winner()
                         }
 
                 }
