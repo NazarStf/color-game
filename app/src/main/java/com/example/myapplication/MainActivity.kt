@@ -12,8 +12,7 @@ import androidx.appcompat.app.AlertDialog
 
 import android.widget.TextView
 import android.graphics.Color
-
-
+import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
@@ -130,10 +129,10 @@ class MainActivity : AppCompatActivity() {
                     val bg = tv.background
                     if (bg is ColorDrawable) {
 
-                        if (row.getChildAt(j+1).background == bg){
+                        if (row.getChildAt(j+1).background as TextView == bg){
                             return false
                         }
-                        if (mainContainer.getChildAt(j+1).background == bg) {
+                        if (mainContainer.getChildAt(i+1).background as LinearLayout == bg) {
                             return false
                         }
 
