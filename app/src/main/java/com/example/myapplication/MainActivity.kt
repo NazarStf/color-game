@@ -128,13 +128,17 @@ class MainActivity : AppCompatActivity() {
                     val tv = row.getChildAt(j) as TextView
                     val bg = tv.background
                     if (bg is ColorDrawable) {
+                        val currentColor = bg.color
                         if (j < row.childCount - 1) {
-                            if (row.getChildAt(j + 1).background as TextView == bg) {
+                            val rightTv = (row.getChildAt(j + 1)as TextView).background
+                            if (rightTv is ColorDrawable && rightTv.color == currentColor) {
                                 return false
                             }
                         }
                         if (i < mainContainer.childCount - 1) {
-                            if (mainContainer.getChildAt(i + 1).background as LinearLayout == bg) {
+                            val nextRow = (mainContainer.getChildAt(i + 1) as LinearLayout)
+                            val bottomTv = (nextRow.getChildAt(j) as TextView).background
+                            if (bottomTv is ColorDrawable && bottomTv.color == currentColor) {
                                 return false
                             }
                         }
