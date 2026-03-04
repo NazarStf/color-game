@@ -104,22 +104,24 @@ class MainActivity : AppCompatActivity() {
         fun checkColors2(): Boolean {
             for (i in 0 until mainContainer.childCount) {
                 val row = mainContainer.getChildAt(i) as LinearLayout
+                var hasRedInRow = false
                 for (j in 0 until row.childCount) {
                     val tv = row.getChildAt(j) as TextView
                     val bg = tv.background
                     if (bg is ColorDrawable) {
-                        val color = bg.color
-                        if (color != Color.RED) {
-                            return false
+                        if (bg.color == Color.RED) {
+                            hasRedInRow = true
+                            break
                         }
-
                     }
+                }
+                if (!hasRedInRow) {
+                    return false
                 }
             }
 
             return true
         }
-
 
         fun winner(){
             Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
