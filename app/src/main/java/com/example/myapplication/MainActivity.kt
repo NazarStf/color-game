@@ -130,6 +130,12 @@ class MainActivity : AppCompatActivity() {
                     val bg = tv.background
                     if (bg is ColorDrawable) {
 
+                        if (row.getChildAt(j+1).background == bg){
+                            return false
+                        }
+                        if (mainContainer.getChildAt(j+1).background == bg) {
+                            return false
+                        }
 
                     }
                 }
