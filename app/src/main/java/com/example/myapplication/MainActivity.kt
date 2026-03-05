@@ -12,7 +12,6 @@ import androidx.appcompat.app.AlertDialog
 
 import android.widget.TextView
 import android.graphics.Color
-import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
