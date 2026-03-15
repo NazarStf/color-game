@@ -73,7 +73,6 @@
             android:clickable="true"
             android:layout_weight="1"
             android:background="@color/black"
-            android:text="2222"
             android:textColor="#757575" />
         <TextView
             android:layout_weight="1"
@@ -82,7 +81,6 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:text="2222"
             />
 
         <TextView
@@ -92,7 +90,6 @@
             android:layout_weight="1"
             android:id="@+id/t3"
             android:background="@color/red"
-            android:text="2222"
             android:textColor="#000000" />
 
     </LinearLayout>
@@ -109,7 +106,6 @@
             android:clickable="true"
             android:layout_weight="1"
             android:background="@color/black"
-            android:text="2222"
             android:textColor="#757575" />
         <TextView
             android:layout_weight="1"
@@ -118,7 +114,6 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:background="@color/white"
-            android:text="2222"
             />
 
         <TextView
@@ -128,7 +123,6 @@
             android:layout_weight="1"
             android:clickable="true"
             android:background="@color/red"
-            android:text="2222"
             android:textColor="#000000" />
 
     </LinearLayout>
@@ -145,7 +139,6 @@
             android:id="@+id/t7"
             android:layout_weight="1"
             android:background="@color/black"
-            android:text="2222"
             android:textColor="#757575" />
         <TextView
             android:layout_weight="1"
@@ -154,7 +147,6 @@
             android:id="@+id/t8"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:text="2222"
             />
 
         <TextView
@@ -164,7 +156,6 @@
             android:id="@+id/t9"
             android:clickable="true"
             android:background="@color/red"
-            android:text="2222"
             android:textColor="#000000" />
 
     </LinearLayout>
@@ -181,7 +172,6 @@
             android:layout_weight="1"
             android:id="@+id/t10"
             android:background="@color/black"
-            android:text="2222"
             android:textColor="#757575" />
         <TextView
             android:layout_weight="1"
@@ -189,7 +179,6 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:background="@color/white"
-            android:text="2222"
             android:id="@+id/t11"
             />
 
@@ -200,7 +189,6 @@
             android:clickable="true"
             android:id="@+id/t12"
             android:background="@color/red"
-            android:text="2222"
             android:textColor="#000000" />
 
     </LinearLayout>
@@ -217,7 +205,6 @@
             android:background="@color/black"
             android:clickable="true"
             android:id="@+id/t13"
-            android:text="2222"
             android:textColor="#757575" />
         <TextView
             android:layout_weight="1"
@@ -226,7 +213,6 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:clickable="true"
-            android:text="2222"
             />
 
         <TextView
@@ -236,7 +222,6 @@
             android:id="@+id/t15"
             android:clickable="true"
             android:background="@color/red"
-            android:text="2222"
             android:textColor="#000000" />
 
     </LinearLayout>

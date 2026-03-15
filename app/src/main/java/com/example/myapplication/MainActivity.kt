@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainContainer = findViewById<LinearLayout>(R.id.mainContainer)
         val levels = findViewById<LinearLayout>(R.id.levels)
-        var selectedLevel = 0
+        var selectedLevel = 1
         val colors = listOf(Color.RED, Color.GREEN, Color.YELLOW)
 
         fun randomizeColors() {
@@ -148,7 +148,9 @@ class MainActivity : AppCompatActivity() {
             return true
         }
 
+        fun checkRoute(){
 
+        }
 
         fun winner(){
             Toast.makeText(this, "All colors match!", Toast.LENGTH_SHORT).show()
@@ -180,10 +182,10 @@ class MainActivity : AppCompatActivity() {
                         val newColor = colors.random()
                         textView.setBackgroundColor(newColor)
                         when (selectedLevel) {
-                            0 -> if (checkColors()) winner()
-                            1 -> if (checkColors1()) winner()
-                            2 -> if (checkColors2()) winner()
-                            3 -> if (checkColors3()) winner()
+                            1 -> if (checkColors()) winner()
+                            2 -> if (checkColors1()) winner()
+                            3 -> if (checkColors2()) winner()
+                            4 -> if (checkColors3()) winner()
                         }
 
                 }
@@ -193,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                     val levelView = levels.getChildAt(j) as TextView
 
                     levelView.setOnClickListener {
-                        selectedLevel = j
+                        selectedLevel = j+1
                         Toast.makeText(this, "Level $selectedLevel selected", Toast.LENGTH_SHORT).show()
                     }
                 }
